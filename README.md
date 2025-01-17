@@ -1,10 +1,11 @@
-# ChallengeSBPO2025
+# challenge-sbpo-2025
 
-Welcome to Mercado Libre's 2025 SBPO Challenge repository! Here you will find the framework base code, documentation, and other resources related to the challenge.
+Welcome to the Mercado Libre First Optimization Challenge repository! This challenge is part of the [LVII Brazilian Symposium on Operations Research (SBPO 2025)](https://sbpo2025.galoa.com.br/sbpo-2025/page/5407-home). For further details, please read the post on Medium ([Portuguese version](https://medium.com/mercadolibre-tech/desafio-mercado-livre-de-otimiza%C3%A7%C3%A3o-3a4009607ee3); [Spanish version](https://medium.com/mercadolibre-tech/primer-desaf%C3%ADo-mercado-libre-de-optimizaci%C3%B3n-e8dad236054c)).
+In this repository, you will find the base code for the framework, documentation, and other resources related to the challenge.
 
 ## Change Log
 
-- **15-01-2025**: Base framework code, documentation and dataset `A`.
+- **17-01-2025**: Base framework code, documentation and dataset `A`.
 
 ## Project Structure
 
@@ -14,8 +15,8 @@ Welcome to Mercado Libre's 2025 SBPO Challenge repository! Here you will find th
 - `src/main/resources/instances/`: Directory containing input instance files.
 - `run_challenge.py`: Python script to compile code, run benchmarks, and evaluate solutions.
 - `checker.py`: Python script for evaluating the feasibility and objective value of solutions.
-- `docs/problem_description_en.pdf`: Document describing the problem in detail.
-- `docs/challenge_rules_en.pdf`: Document outlining the rules of the challenge.
+- `docs/{es,pt}_problem_description.pdf`: Document describing the Wave Order Picking Problem in Spanish and Portuguese, respectively.
+- `docs/{es,pt}_challenge_rules.pdf`: Document describing the challenge rules in Spanish and Portuguese, respectively.
 
 ## Prerequisites
 
@@ -30,7 +31,6 @@ Welcome to Mercado Libre's 2025 SBPO Challenge repository! Here you will find th
 1. Clone the repository:
     ```sh
     git clone https://github.com/mercadolibre/challenge-sbpo-2025
-    cd challenge-sbpo-2025
     ```
 2. Set the paths to CPLEX and OR-Tools libraries in `run_challenge.py` if needed, e.g.:
     ```sh
