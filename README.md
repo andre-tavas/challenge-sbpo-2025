@@ -7,16 +7,28 @@ In this repository, you will find the base code for the framework, documentation
 
 - **17-01-2025**: Base framework code, documentation and dataset `A`.
 
+## Challenge Rules and Problem Description
+
+Spanish and Portuguese versions of the challenge rules and problem description can be found in the `docs` directory:
+
+- **Spanish**:
+  - [Problem description](docs/es_problem_description.pdf)
+  - [Challenge rules](docs/es_challenge_rules.pdf)
+
+
+- **Portuguese**:
+  - [Problem description](docs/pt_problem_description.pdf)
+  - [Challenge rules](docs/pt_challenge_rules.pdf)
+
 ## Project Structure
 
-- `src/main/java/org/sbpo2025/challenge/Challenge.java`: Main Java class for reading an input, solving the challenge, and writing the output.
-- `src/main/java/org/sbpo2025/challenge/ChallengeSolver.java`: Java class responsible for solving the wave order picking problem. Most of the solving logic should be implemented here.
-- `src/main/java/org/sbpo2025/challenge/ChallengeSolution.java`: Java class representing the solution to the wave order picking problem.
-- `src/main/resources/instances/`: Directory containing input instance files.
-- `run_challenge.py`: Python script to compile code, run benchmarks, and evaluate solutions.
-- `checker.py`: Python script for evaluating the feasibility and objective value of solutions.
-- `docs/{es,pt}_problem_description.pdf`: Document describing the Wave Order Picking Problem in Spanish and Portuguese, respectively.
-- `docs/{es,pt}_challenge_rules.pdf`: Document describing the challenge rules in Spanish and Portuguese, respectively.
+- `src/main/java/org/sbpo2025/challenge`
+  - `Challenge.java` ⟶ Main Java class for reading an input, solving the challenge, and writing the output.
+  - `ChallengeSolver.java` ⟶ Java class responsible for solving the wave order picking problem. Most of the solving logic should be implemented here.
+  - `ChallengeSolution.java` ⟶ Java class representing the solution to the wave order picking problem.
+- `datasets/` ⟶ Directory containing input instance files.
+- `run_challenge.py` ⟶ Python script to compile code, run benchmarks, and evaluate solutions.
+- `checker.py` ⟶ Python script for evaluating the feasibility and objective value of solutions.
 
 ## Prerequisites
 
