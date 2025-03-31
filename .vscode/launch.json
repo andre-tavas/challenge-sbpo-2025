@@ -1,0 +1,46 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "checker py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/checker.py",
+            "console": "integratedTerminal",
+            "python": "/mnt/c/Users/andre/anaconda3/envs/wsl_env/bin/python",
+            "args":  [
+                "datasets/a/instance_0007.txt",
+                "output.txt"
+            ]
+        },
+        {
+            "name": "run challenge py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/run_challenge.py",
+            "console": "integratedTerminal",
+            "python": "/mnt/c/Users/andre/anaconda3/envs/wsl_env/bin/python",
+            "args":  [
+                "${workspaceFolder}",
+                "datasets/a/",
+                "output_challenge"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "main java program",
+            "request": "launch",
+            "mainClass": "org.sbpo2025.challenge.Challenge",
+            "vmArgs": "-Djava.library.path=/home/andretg/opt/ibm/ILOG/CPLEX_Studio2211/cplex/bin/x86-64_linux",
+            "args": [
+                "datasets/a/instance_0007.txt",
+                "output.txt"
+            ],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "Build with Maven"
+        },
+    ]
+}

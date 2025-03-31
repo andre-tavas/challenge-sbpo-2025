@@ -16,6 +16,7 @@ public class ChallengeSolver {
     protected int nItems;
     protected int waveSizeLB;
     protected int waveSizeUB;
+    protected int RandomSeed;
 
     public ChallengeSolver(
             List<Map<Integer, Integer>> orders, List<Map<Integer, Integer>> aisles, int nItems, int waveSizeLB, int waveSizeUB) {
@@ -24,11 +25,23 @@ public class ChallengeSolver {
         this.nItems = nItems;
         this.waveSizeLB = waveSizeLB;
         this.waveSizeUB = waveSizeUB;
+        this.RandomSeed = 43;
     }
 
     public ChallengeSolution solve(StopWatch stopWatch) {
-        // Implement your solution here
-        return null;
+        // switch (solver) {
+        //     case "cplex":
+        //         CplexSolver cplex = new CplexSolver(orders, aisles, nItems, waveSizeLB, waveSizeUB);
+        //         return cplex.solve(stopWatch);
+        //     // case "ortools":
+        //     //     return solveWithOrTools(stopWatch);
+        //     // case "metaheuristic":
+        //     //     return solveWithMetaheuristic(stopWatch);
+        //     default:
+        //         throw new IllegalArgumentException("Unknown solver: " + solver);
+        // }
+        CplexSolver cplex = new CplexSolver(orders, aisles, nItems, waveSizeLB, waveSizeUB);
+        return cplex.solve(stopWatch);
     }
 
     /*
