@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 public class ChallengeSolver {
     private final long MAX_RUNTIME = 600000; // milliseconds; 10 minutes
 
-    protected List<Map<Integer, Integer>> orders;
+    protected List<Map<Integer, Integer>> orders; // Mappings are from product ID to quantity 
     protected List<Map<Integer, Integer>> aisles;
     protected int nItems;
     protected int waveSizeLB;
@@ -113,5 +113,15 @@ public class ChallengeSolver {
 
         // Objective function: total units picked / number of visited aisles
         return (double) totalUnitsPicked / numVisitedAisles;
+    }
+
+    protected int[] computeTotalUnitsAvailable(Set<Integer> selectedAisles) {
+        int[] totalUnitsAvailable = new int[nItems];
+        for (int aisle : selectedAisles) {
+            for (Map.Entry<Integer, Integer> entry : aisles.get(aisle).entrySet()) {
+                totalUnitsAvailable[entry.getKey()] += entry.getValue();
+            }
+        }
+        return totalUnitsAvailable;
     }
 }

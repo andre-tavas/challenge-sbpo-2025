@@ -36,7 +36,7 @@
             "mainClass": "org.sbpo2025.challenge.Challenge",
             "vmArgs": "-Djava.library.path=/home/andretg/opt/ibm/ILOG/CPLEX_Studio2211/cplex/bin/x86-64_linux",
             "args": [
-                "datasets/a/instance_0007.txt",
+                "datasets/a/instance_0020.txt",
                 "output.txt"
             ],
             "cwd": "${workspaceFolder}",
