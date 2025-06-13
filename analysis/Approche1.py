@@ -224,4 +224,6 @@ class Approche1(ChallengeSolver):
         model.objective.set_sense(model.objective.sense.maximize)
         
         return min_aisle
+    
+    def solve_all_
         

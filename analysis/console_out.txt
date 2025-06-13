@@ -1,0 +1,203 @@
+Running instance_0020.txt
+
+--- Iteration 1, t = 0.0000, remaining time = 589.87 s ---
+
+--- Iteration 2, t = 2.4000, remaining time = 589.76 s ---
+
+--- Iteration 3, t = 5.0000, remaining time = 589.68 s ---
+Convergence reached.
+
+DOcplex solved in 0.39 seconds. Best ratio: 5.0000
+Output written to /home/andretg/challenge-sbpo-2025/output_challenge/instance_0020.txt
+Log written to analysis/parametric_results.log
+Running instance_0007.txt
+
+--- Iteration 1, t = 0.0000, remaining time = 580.11 s ---
+
+--- Iteration 2, t = 21.3722, remaining time = 579.69 s ---
+Execution timed out after 605s for /home/andretg/challenge-sbpo-2025/datasets/a/instance_0007.txt
+Execution timed out after 605s for /home/andretg/challenge-sbpo-2025/datasets/a/instance_0007.txt
+Running instance_0001.txt
+
+--- Iteration 1, t = 0.0000, remaining time = 589.85 s ---
+
+--- Iteration 2, t = 0.5862, remaining time = 589.71 s ---
+
+--- Iteration 3, t = 11.3333, remaining time = 589.55 s ---
+
+--- Iteration 4, t = 15.0000, remaining time = 589.47 s ---
+Convergence reached.
+
+DOcplex solved in 0.61 seconds. Best ratio: 15.0000
+Output written to /home/andretg/challenge-sbpo-2025/output_challenge/instance_0001.txt
+Log written to analysis/parametric_results.log
+Running instance_0003.txt
+
+--- Iteration 1, t = 0.0000, remaining time = 589.89 s ---
+
+--- Iteration 2, t = 0.8548, remaining time = 589.78 s ---
+
+--- Iteration 3, t = 9.6364, remaining time = 589.55 s ---
+
+--- Iteration 4, t = 12.0000, remaining time = 589.46 s ---
+Convergence reached.
+
+DOcplex solved in 0.61 seconds. Best ratio: 12.0000
+Output written to /home/andretg/challenge-sbpo-2025/output_challenge/instance_0003.txt
+Log written to analysis/parametric_results.log
+Running instance_0018.txt
+
+--- Iteration 1, t = 0.0000, remaining time = 588.51 s ---
+
+--- Iteration 2, t = 13.3889, remaining time = 588.28 s ---
+
+--- Iteration 3, t = 92.6923, remaining time = 583.30 s ---
+
+--- Iteration 4, t = 117.2000, remaining time = 581.16 s ---
+Convergence reached.
+
+DOcplex solved in 12.55 seconds. Best ratio: 117.2000
+Output written to /home/andretg/challenge-sbpo-2025/output_challenge/instance_0018.txt
+Log written to analysis/parametric_results.log
+Running instance_0012.txt
+
+--- Iteration 1, t = 0.0000, remaining time = 589.85 s ---
+
+--- Iteration 2, t = 0.5175, remaining time = 589.75 s ---
+
+--- Iteration 3, t = 6.3214, remaining time = 589.07 s ---
+
+--- Iteration 4, t = 8.8182, remaining time = 588.95 s ---
+
+--- Iteration 5, t = 11.2500, remaining time = 588.76 s ---
+Convergence reached.
+
+DOcplex solved in 1.42 seconds. Best ratio: 11.2500
+Output written to /home/andretg/challenge-sbpo-2025/output_challenge/instance_0012.txt
+Log written to analysis/parametric_results.log
+Running instance_0004.txt
+
+--- Iteration 1, t = 0.0000, remaining time = 589.91 s ---
+
+--- Iteration 2, t = 0.4396, remaining time = 589.84 s ---
+
+--- Iteration 3, t = 2.6667, remaining time = 589.77 s ---
+
+--- Iteration 4, t = 3.2500, remaining time = 589.71 s ---
+
+--- Iteration 5, t = 3.5000, remaining time = 589.65 s ---
+Convergence reached.
+
+DOcplex solved in 0.41 seconds. Best ratio: 3.5000
+Output written to /home/andretg/challenge-sbpo-2025/output_challenge/instance_0004.txt
+Log written to analysis/parametric_results.log
+Running instance_0017.txt
+
+--- Iteration 1, t = 0.0000, remaining time = 589.82 s ---
+
+--- Iteration 2, t = 2.1084, remaining time = 589.70 s ---
+
+--- Iteration 3, t = 21.8750, remaining time = 587.49 s ---
+
+--- Iteration 4, t = 32.0000, remaining time = 587.39 s ---
+
+--- Iteration 5, t = 36.5000, remaining time = 587.26 s ---
+Convergence reached.
+
+DOcplex solved in 2.85 seconds. Best ratio: 36.5000
+Output written to /home/andretg/challenge-sbpo-2025/output_challenge/instance_0017.txt
+Log written to analysis/parametric_results.log
+Running instance_0009.txt
+
+--- Iteration 1, t = 0.0000, remaining time = 589.89 s ---
+
+--- Iteration 2, t = 0.5033, remaining time = 589.78 s ---
+
+--- Iteration 3, t = 4.1351, remaining time = 589.60 s ---
+
+--- Iteration 4, t = 4.2857, remaining time = 589.40 s ---
+
+--- Iteration 5, t = 4.4167, remaining time = 589.15 s ---
+Convergence reached.
+
+DOcplex solved in 1.07 seconds. Best ratio: 4.4167
+Output written to /home/andretg/challenge-sbpo-2025/output_challenge/instance_0009.txt
+Log written to analysis/parametric_results.log
+Running instance_0011.txt
+
+--- Iteration 1, t = 0.0000, remaining time = 588.90 s ---
+
+--- Iteration 2, t = 5.4533, remaining time = 588.63 s ---
+Execution timed out after 605s for /home/andretg/challenge-sbpo-2025/datasets/a/instance_0011.txt
+Execution timed out after 605s for /home/andretg/challenge-sbpo-2025/datasets/a/instance_0011.txt
+Running instance_0015.txt
+
+--- Iteration 1, t = 0.0000, remaining time = 579.01 s ---
+
+--- Iteration 2, t = 9.1517, remaining time = 578.57 s ---
+Execution timed out after 605s for /home/andretg/challenge-sbpo-2025/datasets/a/instance_0015.txt
+Execution timed out after 605s for /home/andretg/challenge-sbpo-2025/datasets/a/instance_0015.txt
+Running instance_0014.txt
+
+--- Iteration 1, t = 0.0000, remaining time = 561.96 s ---
+
+--- Iteration 2, t = 18.7385, remaining time = 561.30 s ---
+Execution timed out after 605s for /home/andretg/challenge-sbpo-2025/datasets/a/instance_0014.txt
+Execution timed out after 605s for /home/andretg/challenge-sbpo-2025/datasets/a/instance_0014.txt
+Running instance_0019.txt
+
+--- Iteration 1, t = 0.0000, remaining time = 588.63 s ---
+
+--- Iteration 2, t = 7.4552, remaining time = 588.38 s ---
+
+--- Iteration 3, t = 111.0000, remaining time = 570.12 s ---
+
+--- Iteration 4, t = 150.2500, remaining time = 568.89 s ---
+
+--- Iteration 5, t = 178.0000, remaining time = 568.21 s ---
+
+--- Iteration 6, t = 202.0000, remaining time = 567.83 s ---
+Convergence reached.
+
+DOcplex solved in 22.43 seconds. Best ratio: 202.0000
+Output written to /home/andretg/challenge-sbpo-2025/output_challenge/instance_0019.txt
+Log written to analysis/parametric_results.log
+Running instance_0002.txt
+
+--- Iteration 1, t = 0.0000, remaining time = 589.89 s ---
+
+--- Iteration 2, t = 0.0606, remaining time = 589.78 s ---
+
+--- Iteration 3, t = 2.0000, remaining time = 589.70 s ---
+
+DOcplex solved in 0.37 seconds. Best ratio: 2.0000
+Output written to /home/andretg/challenge-sbpo-2025/output_challenge/instance_0002.txt
+Log written to analysis/parametric_results.log
+Running instance_0016.txt
+
+--- Iteration 1, t = 0.0000, remaining time = 589.48 s ---
+
+--- Iteration 2, t = 7.7955, remaining time = 589.31 s ---
+
+--- Iteration 3, t = 40.3529, remaining time = 576.18 s ---
+
+--- Iteration 4, t = 63.0000, remaining time = 575.76 s ---
+
+--- Iteration 5, t = 85.0000, remaining time = 575.51 s ---
+Convergence reached.
+
+DOcplex solved in 14.76 seconds. Best ratio: 85.0000
+Output written to /home/andretg/challenge-sbpo-2025/output_challenge/instance_0016.txt
+Log written to analysis/parametric_results.log
+Running instance_0013.txt
+
+--- Iteration 1, t = 0.0000, remaining time = 575.77 s ---
+
+--- Iteration 2, t = 11.0969, remaining time = 575.32 s ---
+Execution timed out after 605s for /home/andretg/challenge-sbpo-2025/datasets/a/instance_0013.txt
+Execution timed out after 605s for /home/andretg/challenge-sbpo-2025/datasets/a/instance_0013.txt
+Running instance_0006.txt
+
+--- Iteration 1, t = 0.0000, remaining time = 574.24 s ---
+
+--- Iteration 2, t = 21.1522, remaining time = 573.66 s ---

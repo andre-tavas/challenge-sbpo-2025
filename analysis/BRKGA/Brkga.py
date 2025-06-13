@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from abc import ABC, abstractmethod
 
 import random
 import time
@@ -42,6 +43,10 @@ class Brkga:
         self.population = self.generate_random(self.population_size)
         
         self.population_info_dict = self.avaliate_population(self.population)
+        
+    @abstractmethod
+    def evaluate_cromossome(self):
+        pass
         
     def generate_random(self, size):
         return [self.generate_cromossome() for i in range(size)]  
@@ -132,17 +137,17 @@ class Brkga:
             
         #Plot Graph    
         IT = list(range(it_completed))
-        # plt.plot(IT, history_best)
+        plt.plot(IT, history_best)
         
-        # upper_y = history_best[-1]
-        # lower_y = upper_y * 2
-        # plt.ylim(lower_y, upper_y)
+        upper_y = history_best[-1]
+        lower_y = upper_y * 2
+        plt.ylim(lower_y, upper_y)
 
-        # plt.title('IT vs Fitness')
-        # plt.xlabel('IT')
-        # plt.ylabel('Fitnaess Value')
-        # plt.grid(True)
-        # plt.show()
+        plt.title('IT vs Fitness')
+        plt.xlabel('IT')
+        plt.ylabel('Fitnaess Value')
+        plt.grid(True)
+        plt.show()
         
     def stop_condition(self, time_spend, it_max_whithout_improve, it_completed, it_max):
         if time_spend > self.time_limit:

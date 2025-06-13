@@ -219,3 +219,42 @@ Sum items : 1573.0
 Time Spent : 2.2588083744049072
 Ratio found : 378.2 
 Sum items : 1891.0 
+-- N aisle = 6 --
+Time Spent : 3.8670427799224854
+Ratio found : 361.1666666666667 
+Sum items : 2167.0 
+-- N aisle = 7 --
+Time Spent : 6.984826564788818
+Ratio found : 346.85714285714283 
+Sum items : 2428.0 
+-- N aisle = 8 --
+Time Spent : 9.645248651504517
+Ratio found : 335.125 
+Sum items : 2681.0 
+-- N aisle = 9 --
+Time Spent : 12.27347469329834
+Ratio found : 323.1111111111111 
+Sum items : 2908.0 
+-- N aisle = 10 --
+Time Spent : 20.712713479995728
+Ratio found : 312.7000000000005 
+Sum items : 3127.000000000005 
+-- N aisle = 11 --
+Time Spent : 43.525864601135254
+Ratio found : 303.6363636363636 
+Sum items : 3340.0 
+-- N aisle = 12 --
+Time Spent : 55.67603254318237
+Ratio found : 295.0833333333333 
+Sum items : 3541.0 
+-- N aisle = 13 --
+Time Spent : 426.13319420814514
+ ----------------------------- Interrupted Execution
+
+Best ratio : 393.25
+N_aisle : 4 
+Total Execution time : 600.3477575778961 
+
+
+
+ -------- instance_0008.txt --------
