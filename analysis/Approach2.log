@@ -1,0 +1,221 @@
+ -------- instance_0010.txt --------
+ ----- Run instances type: a ---------
+
+ -------- instance_0001.txt --------
+---------- Min aisle found : 2.0
+Time Wasted : 0.04415702819824219
+-- N aisle = 2 --
+Time Spent : 0.03653883934020996
+ ------------------------------------ new best
+Ratio found : 16.0 
+Sum items : 32.0 
+-- N aisle = 3 --
+Time Spent : 0.0393376350402832
+ ------------------------------------ new best
+Ratio found : 16.0 
+Sum items : 48.0 
+-- N aisle = 4 --
+Time Spent : 0.06437563896179199
+Ratio found : 14.75 
+Sum items : 59.0 
+-- N aisle = 5 --
+Time Spent : 0.07349228858947754
+ ----------------------------- Reached Upper Bound 
+
+Best ratio : 16.0
+N_aisle : 3 
+Total Execution time : 0.2853069305419922 
+
+
+
+ -------- instance_0002.txt --------
+---------- Min aisle found : 0.0
+Time Wasted : 0.007978439331054688
+-- N aisle = 1 --
+Time Spent : 0.015605688095092773
+ ------------------------------------ new best
+ ----------------------------- Reached Upper Bound 
+
+Best ratio : 3.0
+N_aisle : 1 
+Total Execution time : 0.03043675422668457 
+
+
+
+ -------- instance_0003.txt --------
+---------- Min aisle found : 3.0
+Time Wasted : 0.04886913299560547
+-- N aisle = 3 --
+Time Spent : 0.048285722732543945
+ ------------------------------------ new best
+Ratio found : 12.666666666666666 
+Sum items : 38.0 
+-- N aisle = 4 --
+Time Spent : 0.03396892547607422
+ ------------------------------------ new best
+Ratio found : 13.0 
+Sum items : 52.0 
+-- N aisle = 5 --
+Time Spent : 0.04530501365661621
+Ratio found : 12.2 
+Sum items : 61.0 
+-- N aisle = 6 --
+Time Spent : 0.05903172492980957
+Ratio found : 11.5 
+Sum items : 69.0 
+-- N aisle = 7 --
+Time Spent : 0.06281828880310059
+Ratio found : 11.428571428571429 
+Sum items : 80.0 
+-- N aisle = 8 --
+Time Spent : 0.06685352325439453
+Ratio found : 11.5 
+Sum items : 92.0 
+-- N aisle = 9 --
+Time Spent : 0.06712508201599121
+Ratio found : 11.444444444444445 
+Sum items : 103.0 
+-- N aisle = 10 --
+Time Spent : 0.06233978271484375
+ ----------------------------- Reached Upper Bound 
+
+Best ratio : 13.0
+N_aisle : 4 
+Total Execution time : 0.5350737571716309 
+
+
+
+ -------- instance_0004.txt --------
+---------- Min aisle found : 2.0
+Time Wasted : 0.030422687530517578
+-- N aisle = 2 --
+Time Spent : 0.03394794464111328
+ ------------------------------------ new best
+Ratio found : 4.5 
+Sum items : 9.0 
+-- N aisle = 3 --
+Time Spent : 0.03773140907287598
+Ratio found : 4.0 
+Sum items : 12.0 
+-- N aisle = 4 --
+Time Spent : 0.02994513511657715
+Ratio found : 4.25 
+Sum items : 17.0 
+-- N aisle = 5 --
+Time Spent : 0.04188799858093262
+Ratio found : 4.0 
+Sum items : 20.0 
+-- N aisle = 6 --
+Time Spent : 0.05488944053649902
+Ratio found : 3.8333333333333335 
+Sum items : 23.0 
+-- N aisle = 7 --
+Time Spent : 0.04879927635192871
+Ratio found : 3.857142857142857 
+Sum items : 27.0 
+-- N aisle = 8 --
+Time Spent : 0.06242847442626953
+Ratio found : 3.75 
+Sum items : 30.0 
+-- N aisle = 9 --
+Time Spent : 0.04188799858093262
+Ratio found : 3.7777777777777777 
+Sum items : 34.0 
+-- N aisle = 10 --
+Time Spent : 0.03606438636779785
+Ratio found : 3.8 
+Sum items : 38.0 
+-- N aisle = 11 --
+Time Spent : 0.03991556167602539
+ ----------------------------- Reached Upper Bound 
+
+Best ratio : 4.5
+N_aisle : 2 
+Total Execution time : 0.47362303733825684 
+
+
+
+ -------- instance_0005.txt --------
+---------- Min aisle found : 8.0
+Time Wasted : 69.9158387184143
+-- N aisle = 8 --
+Time Spent : 94.59485077857971
+ ------------------------------------ new best
+Ratio found : 178.875 
+Sum items : 1431.0 
+-- N aisle = 9 --
+Time Spent : 222.13844680786133
+Ratio found : 174.0 
+Sum items : 1566.0 
+-- N aisle = 10 --
+Time Spent : 208.69986987113953
+ ----------------------------- Interrupted Execution
+
+Best ratio : 178.875
+N_aisle : 8 
+Total Execution time : 600.2067456245422 
+
+
+
+ -------- instance_0006.txt --------
+---------- Min aisle found : 1.0
+Time Wasted : 0.6826896667480469
+-- N aisle = 1 --
+Time Spent : 1.815814733505249
+ ------------------------------------ new best
+Ratio found : 692.0 
+Sum items : 692.0 
+-- N aisle = 2 --
+Time Spent : 1.8025233745574951
+Ratio found : 602.5 
+Sum items : 1205.0 
+-- N aisle = 3 --
+Time Spent : 2.6562349796295166
+Ratio found : 556.6666666666666 
+Sum items : 1670.0 
+-- N aisle = 4 --
+Time Spent : 6.078561782836914
+Ratio found : 520.25 
+Sum items : 2081.0 
+-- N aisle = 5 --
+Time Spent : 7.245471715927124
+Ratio found : 497.6 
+Sum items : 2488.0 
+-- N aisle = 6 --
+Time Spent : 15.206106662750244
+Ratio found : 473.8333333333333 
+Sum items : 2843.0 
+-- N aisle = 7 --
+Time Spent : 13.774359464645386
+Ratio found : 455.42857142857144 
+Sum items : 3188.0 
+-- N aisle = 8 --
+Time Spent : 20.542580604553223
+Ratio found : 439.625 
+Sum items : 3517.0 
+-- N aisle = 9 --
+Time Spent : 102.06474661827087
+Ratio found : 426.3333333333333 
+Sum items : 3837.0 
+-- N aisle = 10 --
+Time Spent : 1.1099827289581299
+ ----------------------------- Reached Upper Bound 
+
+Best ratio : 692.0
+N_aisle : 1 
+Total Execution time : 196.11576676368713 
+
+
+
+ -------- instance_0007.txt --------
+---------- Min aisle found : 4.0
+Time Wasted : 2.826645612716675
+-- N aisle = 4 --
+Time Spent : 1.889685869216919
+ ------------------------------------ new best
+Ratio found : 393.25 
+Sum items : 1573.0 
+-- N aisle = 5 --
+Time Spent : 2.2588083744049072
+Ratio found : 378.2 
+Sum items : 1891.0 
