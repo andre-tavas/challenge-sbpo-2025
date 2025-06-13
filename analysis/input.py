@@ -4,8 +4,8 @@ from typing import List, Dict
 
 class Challenge:
     def __init__(self):
-        self.orders: List[Dict[int, int]] = []
-        self.aisles: List[Dict[int, int]] = []
+        self.orders: List[Dict[int, int]] = [] # each element is an order where the dict is item : quantity
+        self.aisles: List[Dict[int, int]] = [] # each element is an aisle where the dict is item : quantity
         self.n_items: int = 0
         self.wave_size_lb: int = 0
         self.wave_size_ub: int = 0
@@ -85,22 +85,39 @@ class ChallengeSolver:
         elapsed_time = time.perf_counter() - start_time
         print(f"Solved in {elapsed_time:.3f} seconds")
         return ChallengeSolution(orders, aisles)
+    
+
+def compute_objective(orders: list[dict], solution : ChallengeSolution):
+
+    total_items_picked = sum(
+        sum(orders[o].values()) for o in solution.orders
+    )
+    aisles_visited = len(solution.aisles)
+    objective = total_items_picked / aisles_visited if aisles_visited > 0 else 0.0
+
+    return objective
+
+
+def log_results(log_file_path: str, instance_name: str, solve_time: float, objective_value: float):
+    try:
+        with open(log_file_path, 'a') as log_file:
+            log_file.write(f"{instance_name}, {solve_time:.4f}, {objective_value:.4f}\n")
+        print(f"Log written to {log_file_path}")
+    except IOError as e:
+        print(f"Error writing log to {log_file_path}")
+        raise e
 
 
 if __name__ == "__main__":
     import sys
 
-
-
-    # if len(sys.argv) != 3:
-    #     print("Usage: python challenge.py <inputFilePath> <outputFilePath>")
-    #     sys.exit(1)
-
-    # input_file = sys.argv[1]
-    # output_file = sys.argv[2]
-
-    input_file = "datasets/a/instance_0020.txt"
-    output_file = "output.txt"
+    if len(sys.argv) != 3:
+        input_file = "datasets/a/instance_0020.txt"
+        output_file = "output.txt"
+    else:
+        input_file = sys.argv[1]
+        output_file = sys.argv[2]
+        log_file = sys.argv[3]
 
     start = time.perf_counter()
 
@@ -112,3 +129,8 @@ if __name__ == "__main__":
 
     solution = solver.solve(start)
     challenge.write_output(solution, output_file)
+
+    elapsed_time = time.perf_counter() - start
+    objetive = compute_objective(challenge.orders, solution)
+
+    log_results(log_file, input_file, elapsed_time, objetive)
