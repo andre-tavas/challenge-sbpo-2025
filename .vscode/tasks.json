@@ -15,6 +15,50 @@
             },
             // "problemMatcher": ["$javac"],
             "detail": "Compiles the project using Maven."
+        },
+        {
+            "label": "Run ChallengeSBPO2025",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-Djava.library.path=/home/andretg/opt/ibm/ILOG/CPLEX_Studio2211/cplex/bin/x86-64_linux",
+                "-jar",
+                "target/ChallengeSBPO2025-1.0.jar",
+                "datasets/b/instance_0010.txt",
+                "output.txt"
+            ],
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "run_challenge a",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "run_challenge.py",
+                "./",
+                "datasets/a/",
+                "output_challenge/"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        },
+        {
+            "label": "run_challenge bhard",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "run_challenge.py",
+                "./",
+                "datasets/b_hard/",
+                "output_challenge_hard/"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
         }
     ]
 }

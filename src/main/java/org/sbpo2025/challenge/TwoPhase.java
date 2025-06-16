@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class CplexSolver extends ChallengeSolver {
+public class TwoPhase extends ChallengeSolver {
 
-    public CplexSolver(
+    public TwoPhase(
             List<Map<Integer, Integer>> orders, List<Map<Integer, Integer>> aisles, int nItems, int waveSizeLB, int waveSizeUB) {
         super(orders, aisles, nItems, waveSizeLB, waveSizeUB);
     }

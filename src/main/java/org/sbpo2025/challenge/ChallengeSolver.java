@@ -29,19 +29,8 @@ public class ChallengeSolver {
     }
 
     public ChallengeSolution solve(StopWatch stopWatch) {
-        // switch (solver) {
-        //     case "cplex":
-        //         CplexSolver cplex = new CplexSolver(orders, aisles, nItems, waveSizeLB, waveSizeUB);
-        //         return cplex.solve(stopWatch);
-        //     // case "ortools":
-        //     //     return solveWithOrTools(stopWatch);
-        //     // case "metaheuristic":
-        //     //     return solveWithMetaheuristic(stopWatch);
-        //     default:
-        //         throw new IllegalArgumentException("Unknown solver: " + solver);
-        // }
-        CplexSolver cplex = new CplexSolver(orders, aisles, nItems, waveSizeLB, waveSizeUB);
-        return cplex.solve(stopWatch);
+        ChallengeSolver solver = new ParametricSolver(orders, aisles, nItems, waveSizeLB, waveSizeUB);
+        return solver.solve(stopWatch);
     }
 
     /*

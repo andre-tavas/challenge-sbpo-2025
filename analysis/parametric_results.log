@@ -20,3 +20,92 @@
 /home/andretg/challenge-sbpo-2025/datasets/a/instance_0019.txt, 22.4408, 202.0000
 /home/andretg/challenge-sbpo-2025/datasets/a/instance_0002.txt, 0.3684, 2.0000
 /home/andretg/challenge-sbpo-2025/datasets/a/instance_0016.txt, 14.7594, 85.0000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0020.txt, 1.0419, 5.0000
+
+
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0020.txt, 0.2644, 5.0000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0007.txt, 36.8513, 392.2500
+
+30s
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0020.txt, 0.2420, 5.0000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0007.txt, 26.8614, 392.2500
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0001.txt, 0.3368, 15.0000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0003.txt, 0.4343, 12.0000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0018.txt, 12.6097, 117.2000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0012.txt, 0.6894, 11.2500
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0004.txt, 0.2287, 3.5000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0017.txt, 1.1629, 36.5000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0009.txt, 0.6020, 4.4167
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0011.txt, 29.2026, 14.5035
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0015.txt, 29.6375, 72.1373
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0014.txt, 29.1043, 0.0024
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0019.txt, 5.3897, 202.0000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0002.txt, 0.2819, 0.0606
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0016.txt, 1.6104, 85.0000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0013.txt, 30.0994, 56.5802
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0006.txt, 30.1650, 408.0000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0010.txt, 29.9481, 16.0183
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0008.txt, 29.4309, 149.4737
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0005.txt, 25.0567, 137.3438
+
+595s
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0020.txt, 0.2495, 5.0000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0007.txt, 36.0465, 392.2500
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0001.txt, 0.6159, 15.0000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0003.txt, 0.6488, 12.0000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0018.txt, 13.3671, 117.2000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0012.txt, 0.6099, 11.2500
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0004.txt, 0.2301, 3.5000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0017.txt, 1.3588, 36.5000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0009.txt, 0.7016, 4.4167
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0011.txt, 594.8803, 14.6071
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0015.txt, 436.8283, 149.3333
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0014.txt, 595.2087, 138.1935
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0019.txt, 5.9764, 202.0000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0002.txt, 0.2941, 0.0303
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0016.txt, 1.7001, 85.0000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0013.txt, 316.1077, 117.3846
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0006.txt, 87.1782, 691.0000
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0010.txt, 595.0470, 16.7885
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0008.txt, 461.4191, 162.9412
+/home/andretg/challenge-sbpo-2025/datasets/a/instance_0005.txt, 594.8267, 157.4074
+
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0007.txt, 6.1359, 108.0000
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0001.txt, 55.3259, 631.5000
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0003.txt, 404.2071, 149.6000
+
+
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0007.txt, 3.3009, 108.0000
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0001.txt, 39.3307, 631.5000
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0003.txt, 407.2540, 149.6000
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0004.txt, 594.5123, 155.6667
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0009.txt, 99.1285, 82.5000
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0015.txt, 591.1986, 136.3667
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0002.txt, 183.7580, 180.6364
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0006.txt, 593.1595, 82.2222
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0010.txt, 592.0970, 226.5600
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0008.txt, 594.8139, 198.9412
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0005.txt, 25.5556, 368.0000
+
+datasets/a/instance_0020.txt, 0.4511, 5.0000
+datasets/a/instance_0020.txt, 0.3240, 5.0000
+datasets/a/instance_0020.txt, 0.3893, 5.0000
+datasets/b/instance_0011.txt, 596.8821, 136.4357
+datasets/b/instance_0011.txt, 597.5566, 41.6144
+
+
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0007.txt, 5.1956, 108.0000
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0001.txt, 25.2826, 631.5000
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0003.txt, 407.6294, 149.6000
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0012.txt, 596.2059, 188.3529
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0004.txt, 594.7820, 155.3889
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0009.txt, 165.6775, 82.5000
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0011.txt, 596.9010, 269.0282
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0015.txt, 594.3157, 136.2000
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0014.txt, 596.5225, 231.8864
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0002.txt, 484.0698, 180.6364
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0013.txt, 591.3641, 200.1753
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0006.txt, 595.0349, 83.2051
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0010.txt, 594.4157, 198.5294
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0008.txt, 595.0670, 203.3571
+/home/andretg/challenge-sbpo-2025/datasets/b/instance_0005.txt, 14.1171, 368.0000

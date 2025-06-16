@@ -25,7 +25,7 @@ def run_benchmark(model_file, input_folder, output_folder, log_file):
 
     for filename in os.listdir(input_folder):
         if filename.endswith(".txt"):
-            print(f"Running {filename}")
+            print(f"\nRunning {filename}")
             input_file = os.path.join(input_folder, filename)
             output_file = os.path.join(output_folder, f"{os.path.splitext(filename)[0]}.txt")
 
@@ -60,7 +60,9 @@ def run_benchmark(model_file, input_folder, output_folder, log_file):
             except TimeoutError as e:
                 print(e)
             except Exception as e:
-                raise e
+                import traceback
+                print(traceback.format_exc())
+                # raise e
 
 
 if __name__ == "__main__":
@@ -73,7 +75,7 @@ if __name__ == "__main__":
         log_file = sys.argv[4]
     else:
         model_file = os.path.join("analysis", "parametric.py")
-        input_folder = os.path.join("datasets", "a")
+        input_folder = os.path.join("datasets", "b")
         output_folder = os.path.join("output_challenge")
         log_file = os.path.join("analysis", "parametric_results.log")
 

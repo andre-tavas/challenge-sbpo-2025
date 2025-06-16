@@ -1,63 +1,96 @@
 import time
+import os
 import numpy as np
 from docplex.mp.model import Model
 from docplex.mp.solution import SolveSolution
 
 from input import ChallengeSolution, ChallengeSolver, Challenge, compute_objective, log_results
 
-MAX_ITER = 30
-TIME_LIMIT = 590
+MAX_ITER = int(10e4)
+TIME_LIMIT = 595
+
+cplex_log_file = os.path.join("analysis","parametric_cplex.log")
+
+def heuristic_warm(orders, aisles, wave_size_lb, wave_size_ub):
+    # Heurística para estimar t inicial
+    rng = np.random.default_rng(42)
+    selected_orders = []
+    total_items_heur = 0
+
+    # Seleciona pedidos aleatórios até atingir o limite inferior
+    order_indices = rng.permutation(len(orders))
+    for o in order_indices:
+        order_items = sum(orders[o].values())
+        if total_items_heur + order_items <= wave_size_ub:
+            selected_orders.append(o)
+            total_items_heur += order_items
+            if total_items_heur >= wave_size_lb:
+                break
+
+    # Determina corredores necessários
+    selected_aisles = set()
+    for o in selected_orders:
+        for i, q in orders[o].items():
+            for a in range(len(aisles)):
+                if aisles[a].get(i):
+                    selected_aisles.add(a)
+
+    # Estima razão e inicializa t
+    if selected_aisles:
+        t = total_items_heur / len(selected_aisles)
+        print(f"Heuristic init: total_items = {total_items_heur}, aisles = {len(selected_aisles)}, t = {t:.4f}")
+    else:
+        t = 0.0
+
+    return t, selected_orders, selected_aisles
+
 
 class DOcplexChallengeSolver(ChallengeSolver):
 
     def solve(self, start_time) -> ChallengeSolution:
-        n_orders = len(self.orders)
-        n_aisles = len(self.aisles)
         n_items = self.n_items
+        orders: list[dict, int] = self.orders
+        aisles: list[dict, int] = self.aisles
 
-        # Preprocessamento
-        u_oi = np.zeros((n_orders, n_items), dtype=int)
-        u_ai = np.zeros((n_aisles, n_items), dtype=int)
-        for o in range(n_orders):
-            for i, q in self.orders[o].items():
-                u_oi[o, i] = float(q)
-        for a in range(n_aisles):
-            for i, q in self.aisles[a].items():
-                u_ai[a, i] = float(q)
+        n_orders = len(orders)
+        n_aisles = len(aisles)
+
+
+        t, selected_orders, selected_aisles = heuristic_warm(orders, aisles, self.wave_size_lb, self.wave_size_ub)
 
         best_orders = []
         best_aisles = []
         best_ratio = 0.0
         tolerance = 1e-4
         max_iterations = MAX_ITER
-        t = 0.0
 
         # Construir modelo base
         base_model = Model(name="WavePicking", log_output=False)
         x = base_model.binary_var_list(n_orders, name="x")
         y = base_model.binary_var_list(n_aisles, name="y")
-        total_items_expr = base_model.sum(np.sum(u_oi[o]) * x[o] for o in range(n_orders))
-
-
-        
+        total_items_expr = base_model.sum(sum(orders[o].values()) * x[o] for o in range(n_orders))     
 
         for i in range(n_items):
-            expr = base_model.sum(u_oi[o][i] * x[o] for o in range(n_orders) if u_oi[o][i] > 0) - \
-                   base_model.sum(u_ai[a][i] * y[a] for a in range(n_aisles) if u_ai[a][i] > 0)
+            expr = base_model.sum(orders[o].get(i) * x[o] for o in range(n_orders) if orders[o].get(i)) - \
+                   base_model.sum(aisles[a].get(i) * y[a] for a in range(n_aisles) if aisles[a].get(i))
             base_model.add_constraint(expr <= 0)
 
         base_model.add_constraint(total_items_expr >= self.wave_size_lb)
         base_model.add_constraint(total_items_expr <= self.wave_size_ub)
+        base_model.parameters.mip.tolerances.mipgap = 0.01
 
-        prev_solution = None
+        # Cria solução inicial para warm start
+        x_vals_init = [1 if i in selected_orders else 0 for i in range(n_orders)]
+        y_vals_init = [1 if j in selected_aisles else 0 for j in range(n_aisles)]
+        prev_solution = (x_vals_init, y_vals_init)
 
         for iter in range(max_iterations):
             remaining_time = TIME_LIMIT - (time.perf_counter() - start_time)
-            if remaining_time <= 1:
+            if remaining_time <= 5:
                 print("Timeout approaching, returning best solution found so far.")
                 break
 
-            print(f"\n--- Iteration {iter+1}, t = {t:.4f}, remaining time = {remaining_time:.2f} s ---")
+            print(f"--- Iteration {iter+1}, t = {t:.4f}, remaining time = {remaining_time:.2f} s ---")
             mdl = base_model.clone()
 
             # Função objetivo parametrizada
@@ -71,15 +104,21 @@ class DOcplexChallengeSolver(ChallengeSolver):
                 for j, val in enumerate(prev_solution[1]):
                     mdl.get_var_by_name(f"y_{j}").start = val
 
-            solution: SolveSolution = mdl.solve(log_output=False, time_limit=remaining_time)
+            with open(cplex_log_file, '+a') as f:
+                f.write(f'\nt = {t}\n')
+                solution: SolveSolution = mdl.solve(log_output=f, time_limit=remaining_time)
+
             if not solution:
                 print("No feasible solution found.")
                 break
 
             x_vals = [solution.get_value(f"x_{i}") for i in range(n_orders)]
             y_vals = [solution.get_value(f"y_{j}") for j in range(n_aisles)]
-            total_items = sum(np.sum(u_oi[o]) * x_vals[o] for o in range(n_orders))
-            total_aisles = sum(y_vals)
+            total_items = sum(sum(orders[o].values()) * x_vals[o] for o in range(n_orders))
+            total_aisles = np.sum(y_vals)
+
+            # print("Orders:", x_vals)
+            # print("Aisles:", y_vals)
 
             if total_aisles == 0:
                 break
@@ -104,8 +143,10 @@ class DOcplexChallengeSolver(ChallengeSolver):
 
         if best_orders and best_aisles:
             return ChallengeSolution(best_orders, best_aisles)
-        return None
-
+        
+        best_aisles = np.ones(n_aisles)
+        best_orders = [np.random.randint(0, n_orders)]
+        return ChallengeSolution(best_orders, best_aisles)
 
 if __name__ == "__main__":
     import sys
@@ -115,9 +156,14 @@ if __name__ == "__main__":
         output_file = sys.argv[2]
         log_file = sys.argv[3]
     except:
-        input_file = "datasets/a/instance_0001.txt"
+        input_file = "datasets/b/instance_0011.txt"
         output_file = "output.txt"
-        log_file = "analysis.log"
+        log_file = os.path.join("analysis","parametric_results.log")
+        
+    with open(cplex_log_file, '+a') as f:
+        f.write('='*80)
+        f.write('\n')
+        f.write(input_file)
 
     start = time.perf_counter()
 
