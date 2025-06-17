@@ -15,8 +15,9 @@ import java.util.concurrent.TimeUnit;
 public class ParametricSolver extends ChallengeSolver {
 
     private static final double EPS = 1e-4;
-    private static final double TIME_MARGIN = 5.0;
+    private static final double TIME_MARGIN = 20.0;
     private static final double TIME_LIMIT_SUBPROBLEM = 60.0;
+    private static final int LARGE_INSTANCE = 30000; // considerando n pedidso + items
 
     // Precomputed data structures for efficiency
     private int[] orderTotals;
@@ -83,7 +84,7 @@ public class ParametricSolver extends ChallengeSolver {
             IloCplex cplex = new IloCplex();
             
             // Optimize CPLEX settings for performance
-            configureCplexForPerformance(cplex, stopWatch);
+            configureCplex(cplex, stopWatch);
 
             // Create variables
             IloIntVar[] x = new IloIntVar[nO];
@@ -131,6 +132,9 @@ public class ParametricSolver extends ChallengeSolver {
             int iteration = 0;
             int maxIterations = Math.min(100, nO + nA); // Limit iterations for large instances
 
+            // Initialize the gap
+            double relativeGap = 0.0;
+
             while (getRemainingTime(stopWatch) > TIME_MARGIN && iteration < maxIterations) {
                 long iterStart = System.currentTimeMillis();
                 
@@ -141,16 +145,21 @@ public class ParametricSolver extends ChallengeSolver {
                 IloNumExpr newObj = cplex.sum(totalItemsPerOrder, cplex.prod(-t, totalAislesExpr));
                 obj.setExpr(newObj);
                 
+                // Se gap da ultima iteracao foi mt alto, usar todo o tempo restante no time limit
+                double time_limit = TIME_LIMIT_SUBPROBLEM;
+                if(relativeGap > 1){
+                    System.out.print("Using all remaning time for the subproblem.\n");
+                    time_limit = (double)getRemainingTime(stopWatch);
+                }
+                
                 cplex.setParam(IloCplex.Param.TimeLimit, 
-                              Math.min(getRemainingTime(stopWatch) - TIME_MARGIN, TIME_LIMIT_SUBPROBLEM)); // Cap individual solve time
+                              Math.min(getRemainingTime(stopWatch) - TIME_MARGIN, time_limit)); // Cap individual solve time
 
                 if (!cplex.solve()) {
                     System.out.println("No feasible solution found in iteration " + iteration);
                     break;
                 }
 
-                // Get relative gap from CPLEX
-                double relativeGap = 0.0;
                 try {
                     relativeGap = cplex.getMIPRelativeGap();
                 } catch (IloException e) {
@@ -180,7 +189,7 @@ public class ParametricSolver extends ChallengeSolver {
 
                 // Convergence check with adaptive tolerance
                 double tolerance = Math.max(EPS, EPS * Math.abs(t));
-                if (Math.abs(newRatio - t) < tolerance) {
+                if (Math.abs(newRatio - t) < tolerance && relativeGap < 1) {
                     System.out.println("Converged at iteration " + iteration);
                     hasConverged = true;
                     break;
@@ -220,35 +229,90 @@ public class ParametricSolver extends ChallengeSolver {
         }
     }
 
-    private void configureCplexForPerformance(IloCplex cplex, StopWatch stopWatch) throws IloException {
-        // Redirect output
+    private void configureCplex(IloCplex cplex, StopWatch stopWatch) throws IloException {
+        // Output management
         try {
             PrintStream out = new PrintStream(new FileOutputStream("cplex_log.txt"));
             cplex.setOut(out);
             cplex.setWarning(out);
         } catch (FileNotFoundException e) {
-            cplex.setOut(null); // Disable output for performance
+            cplex.setOut(null);
             cplex.setWarning(null);
         }
 
-        // Performance-oriented parameters
+        // Basic parameters
         cplex.setParam(IloCplex.Param.RandomSeed, RandomSeed);
         cplex.setParam(IloCplex.Param.TimeLimit, getRemainingTime(stopWatch));
         
-        // Aggressive performance settings
-        cplex.setParam(IloCplex.Param.Emphasis.MIP, IloCplex.MIPEmphasis.Feasibility);
-        cplex.setParam(IloCplex.Param.MIP.Strategy.HeuristicFreq, 10); // More frequent heuristics
-        cplex.setParam(IloCplex.Param.Preprocessing.Presolve, true);
-        cplex.setParam(IloCplex.Param.MIP.Cuts.Cliques, 2); // Aggressive clique cuts
-        cplex.setParam(IloCplex.Param.MIP.Cuts.Covers, 2);  // Aggressive cover cuts
+        // Large instance specific parameters
+        int instanceSize = orders.size() + nItems;
         
-        // Threading
-        int availableProcessors = Runtime.getRuntime().availableProcessors();
-        cplex.setParam(IloCplex.Param.Threads, Math.min(4, availableProcessors));
-        
-        // Memory management
-        cplex.setParam(IloCplex.Param.WorkMem, 2048); // 2GB working memory
-        cplex.setParam(IloCplex.Param.MIP.Strategy.File, 2); // Node file on disk when needed
+        if (instanceSize > LARGE_INSTANCE) {
+            // LARGE INSTANCE SETTINGS
+            
+            // 1. Emphasis on finding feasible solutions quickly
+            cplex.setParam(IloCplex.Param.Emphasis.MIP, IloCplex.MIPEmphasis.Feasibility);
+            
+            // 2. Aggressive preprocessing
+            cplex.setParam(IloCplex.Param.Preprocessing.Presolve, true);
+            cplex.setParam(IloCplex.Param.Preprocessing.NumPass, 10);
+            cplex.setParam(IloCplex.Param.Preprocessing.Aggregator, 10);
+            
+            // 3. Relaxed tolerances for faster solving
+            cplex.setParam(IloCplex.Param.MIP.Tolerances.MIPGap, 0.05); // 5% gap
+            cplex.setParam(IloCplex.Param.MIP.Tolerances.AbsMIPGap, 0.5);
+            cplex.setParam(IloCplex.Param.MIP.Tolerances.Integrality, 1e-4);
+            
+            // 4. Heuristic settings
+            cplex.setParam(IloCplex.Param.MIP.Strategy.HeuristicFreq, 5); // More frequent
+            cplex.setParam(IloCplex.Param.MIP.Strategy.RINSHeur, 50); // RINS every 50 nodes
+            
+            // 5. Node selection strategy
+            cplex.setParam(IloCplex.Param.MIP.Strategy.NodeSelect, 1); // Best-bound
+            
+            // 6. Cut generation - be selective
+            cplex.setParam(IloCplex.Param.MIP.Cuts.Cliques, 1); // Moderate
+            cplex.setParam(IloCplex.Param.MIP.Cuts.Covers, 1);  // Moderate
+            cplex.setParam(IloCplex.Param.MIP.Cuts.FlowCovers, 0); // Disable expensive cuts
+            cplex.setParam(IloCplex.Param.MIP.Cuts.GUBCovers, 0);
+            cplex.setParam(IloCplex.Param.MIP.Cuts.Implied, 1);
+            cplex.setParam(IloCplex.Param.MIP.Cuts.MIRCut, 1);
+            
+            // 7. Branching strategy
+            cplex.setParam(IloCplex.Param.MIP.Strategy.VariableSelect, 3); // Strong branching
+            
+            // 8. Memory and node limits
+            cplex.setParam(IloCplex.Param.WorkMem, 4096); // 4GB working memory
+            cplex.setParam(IloCplex.Param.MIP.Strategy.File, 2); // Disk storage
+            cplex.setParam(IloCplex.Param.MIP.Limits.Nodes, 100000); // Limit nodes for time control
+
+            // Threading - adaptive based on instance size
+            int availableProcessors = Runtime.getRuntime().availableProcessors();
+            int threads = instanceSize > 2000 ? Math.min(6, availableProcessors) : Math.min(4, availableProcessors);
+            cplex.setParam(IloCplex.Param.Threads, threads);
+            
+            // Parallel mode for large instances
+            if (instanceSize > 1500) {
+                cplex.setParam(IloCplex.Param.Parallel, IloCplex.ParallelMode.Opportunistic);
+            }
+            
+        } else {
+            // MEDIUM INSTANCE SETTINGS
+            // Aggressive performance settings
+            cplex.setParam(IloCplex.Param.Emphasis.MIP, IloCplex.MIPEmphasis.Feasibility);
+            cplex.setParam(IloCplex.Param.MIP.Strategy.HeuristicFreq, 10); // More frequent heuristics
+            cplex.setParam(IloCplex.Param.Preprocessing.Presolve, true);
+            cplex.setParam(IloCplex.Param.MIP.Cuts.Cliques, 2); // Aggressive clique cuts
+            cplex.setParam(IloCplex.Param.MIP.Cuts.Covers, 2);  // Aggressive cover cuts
+            
+            // Threading
+            int availableProcessors = Runtime.getRuntime().availableProcessors();
+            cplex.setParam(IloCplex.Param.Threads, Math.min(4, availableProcessors));
+            
+            // Memory management
+            cplex.setParam(IloCplex.Param.WorkMem, 2048); // 2GB working memory
+            cplex.setParam(IloCplex.Param.MIP.Strategy.File, 2); // Node file on disk when needed
+        }
     }
 
     private void addCoverageConstraints(IloCplex cplex, IloIntVar[] x, IloIntVar[] y) throws IloException {
@@ -365,4 +429,5 @@ public class ParametricSolver extends ChallengeSolver {
             e.printStackTrace();
         }
     }
+
 }
